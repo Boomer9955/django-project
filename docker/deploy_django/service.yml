@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: djangoweb
+spec:
+  selector:
+    pod: djangoweb
+  ports:
+  - protocol: TCP
+    port: 8010
+    # targetPort: 8001
+  type: ClusterIP
+  # type: NodePort
