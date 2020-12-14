@@ -1,11 +1,9 @@
 pipeline {
-    agent {
-        docker { image 'node:boomer9955' }
-    }
+    agent any
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'hello'
             }
         }
     }
