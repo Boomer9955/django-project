@@ -1,12 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:boomer9955' }
+    }
     stages {
-        stage('minikube') {
-            steps { script {
-                sh 'ifconfig'
-                //new sh
-                sh 'ipconfig'
-            }}
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
         }
     }
 }
