@@ -1,11 +1,18 @@
+#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+
 pipeline {
     agent {
-        docker { image 'node:boomer9955/django' }
+        label 'master'
     }
     stages {
-        stage('Test') {
+        stage('create docker image') {
             steps {
-                sh 'node --version'
+                echo "------Start Build------"
+                dir ('docker'){
+                    sh 'docker build .'
+                }
             }
         }
     }
