@@ -1,10 +1,11 @@
 pipeline {
-    agent any
-
+    agent {
+        docker { image 'node:boomer9955/django' }
+    }
     stages {
-        stage('Hello') {
+        stage('Test') {
             steps {
-                echo 'Hello World'
+                sh 'node --version'
             }
         }
     }
