@@ -9,12 +9,6 @@ node {
 
     }
 
-	
-    stage('check') {
-
-        sh "docker version"
-    }
-
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
 
