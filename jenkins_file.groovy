@@ -10,7 +10,10 @@ pipeline {
             steps {
                 echo "------Start Build------"
                 dir ('docker'){
-                    sh 'docker images'
+                    sh 'sudo yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo'
+                    sh 'sudo yum install docker-ce'
+                    sh 'sudo systemctl start docker'
+                    sh 'sudo docker run hello-world'
                 }
             }
         }
