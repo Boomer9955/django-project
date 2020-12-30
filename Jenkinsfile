@@ -6,6 +6,13 @@ node {
         def dockerHome = tool 'docker'
         def mavenHome  = tool 'Maven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+
+    }
+
+	
+    stage('check') {
+
+        sh "docker version"
     }
 
     stage('Clone repository') {
