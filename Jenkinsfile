@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("docker/boomer9955/django")
+        app = docker.build("boomer9955/django")
     }
 
     stage('Test image') {
