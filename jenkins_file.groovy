@@ -1,12 +1,18 @@
+#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+
 pipeline {
     agent any
+    
     stages {
-        stage('minikube') {
-            steps { script {
-                sh 'ifconfig'
-                //new sh
-                sh 'ipconfig'
-            }}
+        stage('create docker image') {
+            steps {
+                echo "------Start Build------"
+                dir ('docker'){
+                    sh 'docker build .'
+                }
+            }
         }
     }
 }
