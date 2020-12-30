@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "------Start Build------"
                 dir ('docker'){
-                    sh 'docker build .'
+                    sh 'docker images'
                 }
             }
         }
