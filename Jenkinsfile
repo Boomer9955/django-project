@@ -17,8 +17,9 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-            sh 'cd docker'
+	    dir ('docker'){
 	    app = docker.build("boomer9955/django")
+	}
     }
 
     stage('Test image') {
