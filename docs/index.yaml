@@ -9,6 +9,6 @@ entries:
     name: chart
     type: application
     urls:
-    - https://github.com/Boomer9955/django-project.git/django-web/chart-0.1.2.tgz
+    - https://github.com/Boomer9955/django-project.git/chart-0.1.2.tgz
     version: 0.1.2
 generated: "2020-12-08T18:03:38.173597+03:00"
