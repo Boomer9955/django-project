@@ -5,6 +5,13 @@ properties([disableConcurrentBuilds()])
 pipeline {
     agent any
     
+    stage('Initialize')
+    {
+        def dockerHome = tool 'docker'
+        def mavenHome  = tool 'Maven'
+        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+    }
+    
     stages {
         stage('create docker image') {
             steps {
