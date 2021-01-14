@@ -3,7 +3,7 @@ node {
 	
 	stage('Initialize')
     {
-        def dockerHome = tool 'docker'
+        def dockerHome = tool 'Docker'
         def mavenHome  = tool 'Maven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
 
@@ -17,10 +17,11 @@ node {
 
     stage('Build image') {
         /* This builds the actual image */
-
-	    dir ('docker'){
+	    
+	   
+	    
 	    app = docker.build("boomer9955/django")
-	}
+	
     }
 
     stage('Test image') {
