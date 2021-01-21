@@ -2,7 +2,7 @@ pipeline {
 
     environment { 
 
-        registry = "YourDockerhubAccount/YourRepository" 
+        registry = "boomer9955/mydjango" 
 
         registryCredential = 'dockerhub_id' 
 
