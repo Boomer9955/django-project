@@ -29,8 +29,10 @@ pipeline {
             steps { 
 
                 script { 
-
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    dir("docker") {
+                        sh "pwd"
+                        dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    }
 
                 }
 
