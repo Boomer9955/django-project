@@ -18,7 +18,7 @@ pipeline {
 
             steps { 
 
-                sh "checkout scm"
+                checkout scm
 
             }
 
