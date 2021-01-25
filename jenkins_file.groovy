@@ -6,12 +6,14 @@ pipeline {
     agent any
     
     stages {
-        stage('create docker image') {
+        stage('docker image') {
             steps {
                 echo "------Start Build------"
-                dir ('docker'){
-                    sh 'docker build .'
-                }
+                    def dockerHome = tool 'docker'
+                    def mavenHome  = tool 'Maven'
+                    env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+                    sh "docker version"
+               
             }
         }
     }
