@@ -1,0 +1,6 @@
+all:
+    children:
+        myserver:
+            hosts:
+                server:
+                    ansible_connection: local

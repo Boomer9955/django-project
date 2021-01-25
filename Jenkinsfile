@@ -1,33 +1,73 @@
-node {
-    def app
+pipeline { 
 
-    stage('Clone repository') {
-        /* Cloning the Repository to our Workspace */
+    environment { 
 
-        checkout scm
+        registry = "boomer9955/mydjango" 
+
+        registryCredential = 'dockerhub_id' 
+
+        dockerImage = '' 
+
     }
 
-    stage('Build image') {
-        /* This builds the actual image */
+    agent any 
 
-        app = docker.build("boomer9955/django")
-    }
+    stages { 
 
-    stage('Test image') {
-        
-        app.inside {
-            echo "Tests passed"
-        }
-    }
+        stage('Cloning our Git') { 
 
-    stage('Push image') {
-        /* 
-			You would need to first register with DockerHub before you can push images to your account
-		*/
-        docker.withRegistry('https://registry.hub.docker.com', 'docker') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+            steps { 
+
+                checkout scm
+
+            }
+
+        } 
+
+        stage('Building our image') { 
+
+            steps { 
+
+                script { 
+                    dir("docker") {
+                        sh "pwd"
+                        dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    }
+
+                }
+
             } 
-                echo "Trying to Push Docker Build to DockerHub"
+
+        }
+
+        stage('Deploy our image') { 
+
+            steps { 
+
+                script { 
+
+                    docker.withRegistry( '', registryCredential ) { 
+
+                        dockerImage.push() 
+
+                    }
+
+                } 
+
+            }
+
+        } 
+
+        stage('Cleaning up') { 
+
+            steps { 
+
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+
+            }
+
+        } 
+
     }
+
 }

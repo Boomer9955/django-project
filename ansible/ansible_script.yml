@@ -1,0 +1,4 @@
+- hosts: myserver
+  tasks:
+  - name: start
+    command: minikube start
