@@ -3,4 +3,7 @@ all:
         myserver:
             hosts:
                 server:
-                    ansible_connection: local
+                    ansible_connection: ssh
+                    ansible_user: root
+                    ansible_host: 127.0.0.0
+                    ansible_port: 22
