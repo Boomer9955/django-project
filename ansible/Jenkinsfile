@@ -8,8 +8,8 @@ pipeline {
         }
         stage('Building our image') { 
             steps { 
-                ansiblePlaybook credentialsId: 'myserver', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts', playbook: 'ansible_script.yml' 
-                    }
-                }
+                ansiblePlaybook credentialsId: 'myserver', inventory: 'hosts', playbook: 'ansible_script.yml'                    
+                  }
+               }
             }
         }
