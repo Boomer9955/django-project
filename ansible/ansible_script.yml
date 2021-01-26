@@ -1,4 +1,5 @@
 - hosts: myserver
+  connection: ssh
   tasks:
   - name: start
     command: minikube start
