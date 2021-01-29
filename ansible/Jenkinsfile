@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Building our image') { 
             steps { 
-                ansiblePlaybook inventory: 'ansible/hosts', playbook: 'ansible/ansible_script.yml'                  
+                ansiblePlaybook inventory: 'ansible/hosts.yml', playbook: 'ansible/ansible_script.yml'                  
                     }
                 }
             }

@@ -1,4 +1,4 @@
 - hosts: myserver
-  tasks:
-  - name: start
-    command: minikube start
+  remote_user: boomer
+  roles:
+    - docker
