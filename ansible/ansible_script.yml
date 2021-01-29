@@ -1,0 +1,4 @@
+- hosts: myserver
+  remote_user: boomer
+  roles:
+    - docker
