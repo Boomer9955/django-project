@@ -7,9 +7,11 @@ pipeline {
             }
         }
         stage('Building our image') { 
-            steps { 
-                ansiblePlaybook inventory: 'ansible/hosts.yml', playbook: 'ansible/ansible_script.yml', credentialsId: 'myserver01'                  
-                     }
-                }
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'myserver01', keyFileVariable: '', passphraseVariable: '', usernameVariable: 'boomer')]) {
+                    ansiblePlaybook inventory: 'ansible/hosts.yml', playbook: 'ansible/ansible_script.yml', credentialsId: {myserver01}
+                }                  
             }
         }
+    }
+}
