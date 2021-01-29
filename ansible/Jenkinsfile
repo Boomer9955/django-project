@@ -8,9 +8,7 @@ pipeline {
         }
         stage('Building our image') { 
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'myserver01', keyFileVariable: '', passphraseVariable: '', usernameVariable: 'boomer')]) {
-                    ansiblePlaybook inventory: 'ansible/hosts.yml', playbook: 'ansible/ansible_script.yml', credentialsId: {myserver01}
-                }                  
+                ansiblePlaybook becomeUser: 'boomer', credentialsId: 'myserver01', disableHostKeyChecking: true, inventory: 'ansible/hosts.yml', playbook: 'ansible/ansible_script.yml', sudoUser: 'boomer'                
             }
         }
     }
