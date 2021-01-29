@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Building our image') { 
             steps { 
-                ansiblePlaybook credentialsId: 'myserver01', inventory: 'ansible/hosts.yml', playbook: 'ansible/Jenkinsfile'                 
+                ansiblePlaybook inventory: 'ansible/hosts.yml', playbook: 'ansible/Jenkinsfile', credentialsId: 'myserver01'               
                    }
                 }
             }
