@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Building our image') { 
             steps {
-                ansiblePlaybook becomeUser: 'boomer', credentialsId: 'myserver01', disableHostKeyChecking: true, inventory: 'ansible/hosts.yml', playbook: 'ansible/ansible_script.yml', sudoUser: 'boomer'                
+                ansiblePlaybook credentialsId: 'myserver01', disableHostKeyChecking: true, inventory: 'ansible/hosts.yml', playbook: 'ansible/ansible_script.yml'              
             }
         }
     }
