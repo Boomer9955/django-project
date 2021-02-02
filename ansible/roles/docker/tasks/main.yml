@@ -83,7 +83,7 @@
 
 - name: Debug install_virtualbox
   debug:
-  var: install_virtualbox
+    var: install_virtualbox
 
 # Kubectl
 - name: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
