@@ -50,10 +50,25 @@
     name: docker-compose
   notify: good install docker-compose
 
-- name: Install minikube
+- name: Install rcurl file gitew
   become: yes
   apt:
-    name: minikube
+    name: build-essential curl file git
     state: present
     update_cache: yes
-  notify: good install minikube
+  notify: good install build-essential curl file git
+
+- name: Install brew
+  become: yes
+  command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  notify: good install brew
+
+- name: Install kubectl
+  become: yes
+  command: brew install kubectl
+  notify: good install kubectl
+
+- name: Install minikube
+  become: yes
+  command: brew install minikube
+  notify: Start minikube on boot
