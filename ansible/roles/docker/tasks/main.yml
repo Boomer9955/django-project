@@ -63,7 +63,6 @@
   apt:
     name: virtualbox
     update_cache: yes
-  notify: good install python
 
 # Kubectl
 - name: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
