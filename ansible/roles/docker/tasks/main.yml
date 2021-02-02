@@ -42,20 +42,28 @@
   apt:
     name: ['python3-pip', 'python3-setuptools', 'virtualenv']
     update_cache: yes
+  notify: good install python
 
 - name: Install docker-compose
   become: yes
   pip:
     name: docker-compose
+  notify: good install docker-compose
 
 - name: Install brew
   become: yes
-  command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  apt:
+    name: brew
+    state: present
+    update_cache: yes
+  notify: good install brew
 
 - name: Install kubectl
   become: yes
   command: brew install kubectl
+  notify: good install kubectl
 
 - name: Install minikube
   become: yes
   command: brew install minikube
+  notify: Start minikube on boot
