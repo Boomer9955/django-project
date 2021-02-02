@@ -52,10 +52,7 @@
 
 - name: Install rcurl file gitew
   become: yes
-  apt:
-    name: build-essential curl file git
-    state: present
-    update_cache: yes
+  command: apt-get install build-essential curl file git
   notify: good install build-essential curl file git
 
 - name: Install brew
