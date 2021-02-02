@@ -50,14 +50,13 @@
     name: docker-compose
   notify: good install docker-compose
 
-- name: Install rcurl file gitew
+- name: Install curl file gitew
   become: yes
   command: apt install build-essential curl file git
 
 - name: Install brew
   become: yes
-  command: mkdir /bin/bash
-  command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  command: $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 - name: Install kubectl
   become: yes
