@@ -54,8 +54,6 @@
 - name: apt-get update
   become: yes
   apt: 
-    update
-  apt: 
     upgrade
   update_cache: yes
 
