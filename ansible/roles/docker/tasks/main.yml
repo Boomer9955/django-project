@@ -52,10 +52,11 @@
 
 - name: Install rcurl file gitew
   become: yes
-  command: apt-get install build-essential curl file git
+  command: apt install build-essential curl file git
 
 - name: Install brew
   become: yes
+  command: mkdir /bin/bash
   command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 - name: Install kubectl
