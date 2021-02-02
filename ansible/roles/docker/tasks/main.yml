@@ -54,7 +54,7 @@
 - name: apt-get upgrade
   become: yes
   apt:
-    upgrade: yes
+    #upgrade: yes
     update_cache: yes
 
 - name: Install VirtualBox
