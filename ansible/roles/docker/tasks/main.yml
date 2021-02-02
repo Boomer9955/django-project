@@ -51,11 +51,12 @@
   notify: good install docker-compose
 
 # VirtualBox
-- name: apt-get update
+- name: apt-get upgrade
   become: yes
-  apt: 
-    upgrade
-  update_cache: yes
+  apt:
+    name:
+      - upgrade
+      - update
 
 - name: Install VirtualBox
   become: yes
