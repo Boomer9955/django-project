@@ -52,6 +52,7 @@
 
 # VirtualBox
 - name: Install VirtualBox
+  become: yes
   apt:
     name: virtualbox
     update_cache: yes
