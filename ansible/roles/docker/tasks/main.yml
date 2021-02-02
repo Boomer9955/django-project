@@ -54,9 +54,8 @@
 - name: apt-get upgrade
   become: yes
   apt:
-    name:
-      - upgrade
-      - update
+    upgrade: yes
+    update_cache: yes
 
 - name: Install VirtualBox
   become: yes
