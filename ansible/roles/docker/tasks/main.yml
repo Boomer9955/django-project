@@ -57,9 +57,9 @@
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     state: present
 
-- name: line to a file if it does not exist, without passing regexp
+- name: Add a line to a file if it does not exist, without passing regexp
   become: yes
-  ineinfile:
+  lineinfile:
     create: yes
     path: /etc/apt/sources.list.d/kubernetes.list
     line: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
