@@ -51,17 +51,6 @@
   notify: good install docker-compose
 
 # apt
-- name: Update all packages to their latest version
-  become: yes
-  apt:
-    name: "*"
-    state: latest
-
-- name: Upgrade the OS (apt-get dist-upgrade)
-  become: yes
-  apt:
-    upgrade: dist
-
 - name: apt-get upgrade
   become: yes
   apt:
