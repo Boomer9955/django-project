@@ -57,7 +57,7 @@
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     state: present
 
-- name: Add a line to a file if it does not exist, without passing regexp
+- name: line to a file if it does not exist, without passing regexp
   become: yes
   ineinfile:
     create: yes
