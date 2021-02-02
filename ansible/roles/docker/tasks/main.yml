@@ -98,4 +98,4 @@
 
 - name: Start minikube
   shell: "minikube start"
-  register: start_mikube
+  register: start_minikube
