@@ -47,3 +47,15 @@
   become: yes
   pip:
     name: docker-compose
+
+- name: Install brew
+  become: yes
+  command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+- name: Install kubectl
+  become: yes
+  command: brew install kubectl
+
+- name: Install minikube
+  become: yes
+  command: brew install minikube
