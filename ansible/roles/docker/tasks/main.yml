@@ -50,6 +50,16 @@
     name: docker-compose
   notify: good install docker-compose
 
+- name: Install minikube
+  become: yes
+  apt:
+    name: minikube
+    state: present
+    update_cache: yes
+  notify: good install minikube
+
+
+'''
 - name: Install brew
   become: yes
   apt:
@@ -67,3 +77,4 @@
   become: yes
   command: brew install minikube
   notify: Start minikube on boot
+'''
