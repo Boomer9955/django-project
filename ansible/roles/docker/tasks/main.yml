@@ -57,6 +57,11 @@
     #upgrade: yes
     update_cache: yes
 
+- name: update package
+  apt:
+    name:  my_package
+    state: fixed
+    
 - name: Install VirtualBox
   become: yes
   apt:
