@@ -50,18 +50,23 @@
     name: docker-compose
   notify: good install docker-compose
 
-# VirtualBox
+# apt
+- name: Update all packages to their latest version
+  apt:
+    name: "*"
+    state: latest
+
+- name: Upgrade the OS (apt-get dist-upgrade)
+  apt:
+    upgrade: dist
+
 - name: apt-get upgrade
   become: yes
   apt:
-    #upgrade: yes
+    upgrade: yes
     update_cache: yes
 
-- name: update package
-  apt:
-    name:  my_package
-    state: fixed
-    
+# VirtualBox
 - name: Install VirtualBox
   become: yes
   apt:
