@@ -57,24 +57,3 @@
     state: present
     update_cache: yes
   notify: good install minikube
-
-
-'''
-- name: Install brew
-  become: yes
-  apt:
-    name: brew
-    state: present
-    update_cache: yes
-  notify: good install brew
-
-- name: Install kubectl
-  become: yes
-  command: brew install kubectl
-  notify: good install kubectl
-
-- name: Install minikube
-  become: yes
-  command: brew install minikube
-  notify: Start minikube on boot
-'''
