@@ -82,14 +82,14 @@
 - name: Download Minikube
   get_url:
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    dest: /home/minikube-linux-amd64
+    dest: /home/boomer/Downloads/minikube-linux-amd64
     mode: 0440
 
 - name: Install Minikube
   become: yes
   shell: "install minikube-linux-amd64 /usr/local/bin/minikube"
   args: 
-    chdir: /home
+    chdir: /home/boomer/Downloads
   register: install_minikube
 
 - name: Debug install_minikube
