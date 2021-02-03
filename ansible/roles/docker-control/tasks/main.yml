@@ -19,5 +19,5 @@
 #start image
 - name: start minikube
   docker_container:
-    image: gcr.io/k8s-minikube/kicbase
+    name: gcr.io/k8s-minikube/kicbase
     state: started
