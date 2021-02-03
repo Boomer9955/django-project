@@ -1,11 +1,11 @@
 #Login and Start
-- name: Log into DockerHub
-  docker_login:
-    username: boomer9955
-    password: bmw1258963-
-
 - name: Start docker on boot
   systemd:
     name: docker
     state: started
     enabled: yes
+
+- name: Log into DockerHub
+  docker_login:
+    username: boomer9955
+    password: bmw1258963-
