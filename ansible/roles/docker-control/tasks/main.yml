@@ -13,6 +13,5 @@
 #pull image
 - name: Pull an image
   community.docker.docker_image:
-    name: gcr.io/k8s-minikube/kicbase
-    tag: v0.0.14
+    name: boomer9955/mydjango
     source: pull
