@@ -5,3 +5,7 @@
     tag: v0.0.14
     source: pull
 
+- name: start minikube
+  docker:
+    image: gcr.io/k8s-minikube/kicbase:v0.0.14
+    state: started
