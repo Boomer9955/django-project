@@ -19,5 +19,6 @@
 #start image
 - name: start minikube
   docker:
-    image: gcr.io/k8s-minikube/kicbase:v0.0.14
+    image: gcr.io/k8s-minikube/kicbase
+    tag: v0.0.14
     state: started
