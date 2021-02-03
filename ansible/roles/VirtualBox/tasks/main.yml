@@ -1,0 +1,13 @@
+# apt
+- name: apt-get upgrade
+  become: yes
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+# VirtualBox
+- name: Install VirtualBox
+  become: yes
+  apt:
+    name: virtualbox
+    update_cache: yes
