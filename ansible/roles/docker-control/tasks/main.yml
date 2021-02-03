@@ -3,7 +3,6 @@
   docker_login:
     username: boomer9955
     password: bmw1258963-
-    email: rombich@bk.ru
 
 - name: Start docker on boot
   systemd:
