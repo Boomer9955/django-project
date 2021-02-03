@@ -50,10 +50,3 @@
   pip:
     name: docker-compose
   notify: good install docker-compose
-
-#pull image
-- name: Pull an image
-  community.docker.docker_image:
-    name: gcr.io/k8s-minikube/kicbase
-    tag: v0.0.14
-    source: pull

@@ -31,7 +31,7 @@ pipeline {
                 script { 
                     dir("docker") {
                         sh "pwd"
-                        dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                        dockerImage = docker.build registry + ":latest" 
                     }
 
                 }
@@ -62,7 +62,7 @@ pipeline {
 
             steps { 
 
-                sh "docker rmi $registry:$BUILD_NUMBER" 
+                sh "docker rmi $registry:latest" 
 
             }
 
