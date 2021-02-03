@@ -18,7 +18,7 @@
 
 #start image
 - name: start minikube
-  community.docker.docker_image:
-    name: gcr.io/k8s-minikube/kicbase
+  docker_container:
+    image: gcr.io/k8s-minikube/kicbase
     tag: v0.0.14
-    source: run
+    state: started
