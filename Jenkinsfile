@@ -29,7 +29,7 @@ pipeline {
             steps { 
 
                 script { 
-                    dir("docker") {
+                    dir("django") {
                         sh "pwd"
                         dockerImage = docker.build registry + ":latest" 
                     }
