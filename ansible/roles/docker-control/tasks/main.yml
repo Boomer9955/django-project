@@ -20,5 +20,4 @@
 - name: start minikube
   docker_container:
     image: gcr.io/k8s-minikube/kicbase
-    tag: v0.0.14
     state: started
