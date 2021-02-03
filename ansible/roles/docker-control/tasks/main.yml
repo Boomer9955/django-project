@@ -9,3 +9,8 @@
   docker_login:
     username: boomer9955
     password: bmw1258963-
+
+#pull image
+- name: pull an image
+  docker_image:
+    name: boomer9955/mydjango
