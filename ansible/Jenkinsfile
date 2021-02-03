@@ -6,7 +6,7 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Building our image') { 
+        stage('install app') { 
             steps {
                 ansiblePlaybook credentialsId: 'myserver01', disableHostKeyChecking: true, inventory: 'ansible/hosts.yml', playbook: 'ansible/deploymen_applications.yml'              
             }
