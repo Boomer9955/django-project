@@ -111,5 +111,4 @@
     var: install_minikube
 
 - name: Start minikube
-  shell: "minikube start"
-  register: start_minikube
+  command: "minikube start"
