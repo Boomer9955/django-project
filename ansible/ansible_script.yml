@@ -3,4 +3,4 @@
   roles:
     - docker
     - kubectl
-    - Virtualbox
+    - VirtualBox
