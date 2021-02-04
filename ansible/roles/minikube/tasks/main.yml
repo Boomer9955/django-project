@@ -5,7 +5,24 @@
     tag: v0.0.14
     source: pull
 
-- name: start minikube
-  docker:
-    image: gcr.io/k8s-minikube/kicbase:v0.0.14
-    state: started
+# Minikube
+- name: Download Minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /home/boomer/Downloads/minikube-linux-amd64
+    mode: 0440
+
+- name: Install Minikube
+  become: yes
+  shell: "install minikube-linux-amd64 /usr/local/bin/minikube"
+  args: 
+    chdir: /home/boomer/Downloads
+  register: install_minikube
+
+- name: Debug install_minikube
+  debug: 
+    var: install_minikube
+
+- name: Start minikube
+  shell: "minikube start"
+  register: start_minikube
