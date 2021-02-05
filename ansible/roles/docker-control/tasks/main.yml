@@ -1,21 +1,25 @@
 #Login and Start
 - name: Start docker on boot
+  become: yes
   systemd:
     name: docker
     state: started
     enabled: yes
 
 - name: Log into DockerHub
+  become: yes
   docker_login:
     username: boomer9955
     password: bmw1258963-
 
 #pull image
 - name: Pull an image
+  become: yes
   community.docker.docker_image:
     name: boomer9955/mydjango
     source: pull
 
 #start image
 - name: start minikube
-  shell: minikube start
+  become: yes
+  shell: minikube start --memory = 1987mb

@@ -1,5 +1,6 @@
 #pull image minikube
 - name: Pull an image
+  become: yes
   community.docker.docker_image:
     name: gcr.io/k8s-minikube/kicbase
     tag: v0.0.14
@@ -7,6 +8,7 @@
 
 # Minikube
 - name: Download Minikube
+  become: yes
   get_url:
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     dest: /home/boomer/Downloads/minikube-linux-amd64
@@ -24,5 +26,6 @@
     var: install_minikube
 
 - name: Start minikube
+  become: yes
   shell: "minikube start"
   register: start_minikube
