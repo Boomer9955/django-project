@@ -22,7 +22,7 @@
 #start minikube
 - name: start minikube
   become: yes
-  shell: minikube start
+  shell: minikube start --driver = none
 
 #status minikube
 - name: status minikube
