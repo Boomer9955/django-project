@@ -21,11 +21,9 @@
 
 #start minikube
 - name: Start minikube
-  become: yes
   shell: "minikube start"
   register: start_minikube
 
 #status minikube
 - name: status minikube
-  become: yes
   shell: "minikube status"
