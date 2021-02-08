@@ -19,7 +19,12 @@
     name: boomer9955/mydjango
     source: pull
 
-#start image
+#start minikube
 - name: start minikube
   become: yes
   shell: minikube start
+
+#status minikube
+- name: status minikube
+  become: yes
+  shell: minikube status
