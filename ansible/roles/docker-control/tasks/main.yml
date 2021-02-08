@@ -22,4 +22,4 @@
 #start image
 - name: start minikube
   become: yes
-  shell: minikube start --memory = 1987mb
+  shell: minikube start
