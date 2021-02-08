@@ -20,14 +20,12 @@
     source: pull
 
 #minikube
-tasks:
-  - name: minikube
-    shell: "minikube status"
-    register: shell_result
-  - debug:
-      msg: "Запуск minikube.."
-      when: shell_result.stdout.find("Stopped") == minikube start
-handlers:
-   - name: minikube start
-    shell: "minikube start"
-    register: shell_result
+- name: minikube
+  shell: "minikube status"
+  register: shell_result
+- debug:
+    msg: "Запуск minikube.."
+    when: shell_result.stdout.find("Stopped") == start
+- name: start
+  shell: "minikube start"
+  register: shell_result
