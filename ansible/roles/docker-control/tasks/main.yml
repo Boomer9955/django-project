@@ -19,10 +19,14 @@
     name: boomer9955/mydjango
     source: pull
 
-#Status minikube
-- name: Status minikube
-  shell: "minikube status"
-  register: shell_result
-- debug:
-    msg: "Запуск minikube.."
-    when: shell_result.stdout.find('Stopped') == minikube start
+#minikube
+- name: minikube
+  block:
+  - name: status minikube
+    shell: "minikube status"
+    register: shell_result
+  rescue:
+  - name: start minikube
+  - debug:
+      msg: "Запуск minikube.."
+      when: shell_result.stdout.find("Stopped") == minikube start
