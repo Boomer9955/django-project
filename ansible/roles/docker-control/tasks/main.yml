@@ -25,7 +25,7 @@
   register: shell_result
 - debug:
     msg: "Запуск minikube.."
-    when: shell_result.stdout.find("Stopped") == start
+    when: shell_result.stdout_lines.find("Stopped") == start
 - name: start
   shell: "minikube start"
   register: shell_result
