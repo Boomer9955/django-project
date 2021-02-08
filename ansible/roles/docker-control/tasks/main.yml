@@ -27,6 +27,5 @@
     register: shell_result
   rescue:
   - name: start minikube
-  - debug:
       msg: "Запуск minikube.."
       when: shell_result.stdout.find("Stopped") == minikube start
