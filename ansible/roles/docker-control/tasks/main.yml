@@ -22,7 +22,7 @@
 #start minikube
 - name: start minikube
   become: yes
-  shell: minikube start --driver = none
+  shell: minikube start --driver = virtualbox
 
 #status minikube
 - name: status minikube
