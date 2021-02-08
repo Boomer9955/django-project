@@ -23,8 +23,8 @@
 - name: Start minikube
   shell: "minikube start"
   register: shell_result
-  - debug:
-      var: shell_result.stdout_lines
+- debug:
+    var: shell_result.stdout_lines
 
 #status minikube
 - name: status minikube
