@@ -22,10 +22,11 @@
 #minikube
 - name: minikube
   block:
-  - name: status minikube
-    shell: "minikube status"
-    register: shell_result
+    - name: status minikube
+      shell: "minikube status"
+      register: shell_result
   rescue:
-  - name: start minikube
-      msg: "Запуск minikube.."
-      when: shell_result.stdout.find("Stopped") == minikube start
+    - name: start minikube
+    - debug:
+        msg: "Запуск minikube.."
+        when: shell_result.stdout.find("Stopped") == minikube start
