@@ -23,10 +23,6 @@
 - name: Status minikube
   shell: "minikube status"
   register: shell_result
-
-
-#start minikube
-- name: start minikube
-  debug:
+- debug:
     msg: "Запуск minikube.."
     when: shell_result.stdout.find('Stopped') == minikube start
