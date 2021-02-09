@@ -1,10 +1,10 @@
 #Login and Start
 - name: Start project
   vars:
-    - image: boomer9955/mydjango
-    - name: boomer9955
-    - pass: bmw1258963-
-    - pod_name: djangoweb
+    image: boomer9955/mydjango
+    name: boomer9955
+    pass: bmw1258963-
+    pod_name: djangoweb
 
   tasks:
     - name: Start docker on boot
