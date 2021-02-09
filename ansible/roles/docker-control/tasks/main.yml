@@ -32,7 +32,7 @@
 
 #start container
 - name: start application
-  command: kubectl run djangoweb --image=boomer9955/mydjango deployment "djangoweb" created
+  command: kubectl run djangoweb --image=boomer9955/mydjango
   register: command_result
 - debug:
     var: command_result.stdout_lines
