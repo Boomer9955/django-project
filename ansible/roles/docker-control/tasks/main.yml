@@ -1,9 +1,9 @@
 #Login and Start
 vars:
-    - image: "boomer9955/mydjango"
-    - username: "boomer9955"
-    - password: "bmw1258963-"
-    - pod_name: "djangoweb"
+  - image: "boomer9955/mydjango"
+  - username: "boomer9955"
+  - password: "bmw1258963-"
+  - pod_name: "djangoweb"
 
 - name: Start docker on boot
   become: yes
