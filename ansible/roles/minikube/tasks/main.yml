@@ -25,7 +25,12 @@
   debug: 
     var: install_minikube
 
-- name: Start minikube
-  become: yes
-  shell: "minikube start"
-  register: start_minikube
+- name: Check Minikube's status.
+  command: minikube status
+  register: minikube_status
+  changed_when: false
+  ignore_errors: true
+#Otherwise will start minikube
+- name: Start Minikube if it's not running.
+  command: minikube start
+  when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
