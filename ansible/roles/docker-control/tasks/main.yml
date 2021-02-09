@@ -1,44 +1,36 @@
 #Login and Start
-- name: Start project
-  vars:
-    image: boomer9955/mydjango
-    name: boomer9955
-    pass: bmw1258963-
-    pod_name: djangoweb
+- name: Start docker on boot
+  become: yes
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
 
-  tasks:
-    - name: Start docker on boot
-      become: yes
-      systemd:
-        name: docker
-        state: started
-        enabled: yes
+- name: Log into DockerHub
+  become: yes
+  docker_login:
+    username: boomer9955
+    password: bmw1258963-
 
-    - name: Log into DockerHub
-      become: yes
-      docker_login:
-        username: "{{ name }}"
-        password: "{{ pass }}"
+#pull image
+- name: Pull an image
+  become: yes
+  community.docker.docker_image:
+    name: boomer9955/mydjango
+    source: pull
 
-    #pull image
-    - name: Pull an image
-      become: yes
-      community.docker.docker_image:
-        name: "{{ image }}"
-        source: pull
+#minikube
+- name: Check Minikube's status.
+  command: minikube status
+  register: minikube_status
+  changed_when: false
+  ignore_errors: true
+#Otherwise will start minikube
+- name: Start Minikube if it's not running.
+  command: minikube start
+  when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
 
-    #minikube
-    - name: Check Minikube's status.
-      command: minikube status
-      register: minikube_status
-      changed_when: false
-      ignore_errors: true
-    #Otherwise will start minikube
-    - name: Start Minikube if it's not running.
-      command: minikube start
-      when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
-
-    #start container
-    - name: start application
-      command: kubectl run {{ pod_name }} --image={{ image }}
-      register: command_result
+#start container
+- name: start application
+  command: kubectl run djangoweb --image=boomer9955/mydjango
+  register: command_result
