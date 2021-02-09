@@ -1,8 +1,8 @@
 #Login and Start
 vars:
   - image: boomer9955/mydjango
-  - username: boomer9955
-  - password: bmw1258963-
+  - name: boomer9955
+  - pass: bmw1258963-
   - pod_name: djangoweb
 
 tasks:
@@ -16,8 +16,8 @@ tasks:
   - name: Log into DockerHub
     become: yes
     docker_login:
-      username: {{ username }}
-      password: {{ password }}
+      username: {{ name }}
+      password: {{ pass }}
 
   #pull image
   - name: Pull an image
