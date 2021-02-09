@@ -16,14 +16,14 @@ tasks:
   - name: Log into DockerHub
     become: yes
     docker_login:
-      username: {{ name }}
-      password: {{ pass }}
+      username: "{{ name }}"
+      password: "{{ pass }}"
 
   #pull image
   - name: Pull an image
     become: yes
     community.docker.docker_image:
-      name: {{ image }}
+      name: "{{ image }}"
       source: pull
 
   #minikube
