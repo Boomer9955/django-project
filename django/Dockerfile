@@ -1,7 +1,7 @@
-FROM python:3.7
+FROM python:3.8
 
 # set work directory
-ENV PROJECT_ROOT /docker
+ENV PROJECT_ROOT /django
 WORKDIR $PROJECT_ROOT
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -10,6 +10,4 @@ ENV PYTHONUNBUFFERED 1
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 COPY . .
-CMD python manage.py createsuperuser --username admin --email admin@example.com --noinput
-CMD python manage.py changepassword admin
 CMD python manage.py runserver 0.0.0.0:8010

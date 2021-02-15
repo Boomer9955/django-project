@@ -1,5 +1,3 @@
-celery
 Django
 django-health-check
-kombu
 psycopg2-binary

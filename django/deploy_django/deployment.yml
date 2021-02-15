@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: djangoweb
-          image: boomer9955/mydjango:v2
+          image: boomer9955/mydjango:latest
           ports:
             - containerPort: 8010
           env:
@@ -27,17 +27,10 @@ spec:
                 secretKeyRef:
                   name: postgres-credentials
                   key: user
-
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-credentials
                   key: password
-
             - name: POSTGRES_HOST
               value: postgres-service
-
-
-
-
-            
