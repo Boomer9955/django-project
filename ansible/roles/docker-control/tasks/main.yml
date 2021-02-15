@@ -43,4 +43,3 @@
   ansible.builtin.git:
     repo: https://github.com/Boomer9955/django-project.git
     dest: /home/{{ansible_user}}/Documents/
-    separate_git_dir: /home/{{ansible_user}}/Documents/django-project.git
