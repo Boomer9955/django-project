@@ -3,13 +3,7 @@
 - name: deployment postgres
   become: yes
   shell: kubectl apply -f /home/{{ansible_user}}/Documents/django/postgres
-  register: shell_status
-- debug:
-    var: command_result.stdout_lines
 
 - name: deployment app
   become: yes
   shell: kubectl apply -f /home/{{ansible_user}}/Documents/django/deploy-django
-  register: shell_status
-- debug:
-    var: command_result.stdout_lines
