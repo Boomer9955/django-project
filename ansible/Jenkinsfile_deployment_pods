@@ -1,0 +1,15 @@
+pipeline { 
+    agent any 
+    stages {
+        stage('Cloning our Git') { 
+            steps { 
+                checkout scm
+            }
+        }
+        stage('docker control') { 
+            steps {
+                ansiblePlaybook credentialsId: 'myserver01', disableHostKeyChecking: true, inventory: 'ansible/hosts.yml', playbook: 'ansible/deployment_pods.yml'              
+            }
+        }
+    }
+}

@@ -12,6 +12,13 @@
     username: boomer9955
     password: bmw1258963-
 
+#delete image
+- name: rmi an image
+  become: yes
+  community.docker.docker_image:
+    name: boomer9955/mydjango
+    source: rmi
+
 #pull image
 - name: Pull an image
   become: yes
@@ -30,9 +37,6 @@
   command: minikube start
   when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
 
-#start container
-- name: start application
-  command: kubectl run djangoweb --image=boomer9955/mydjango
-  register: command_result
-- debug:
-    var: command_result.stdout_lines
+#git clone
+- name: git clone.
+  command: cd Documents | git clone https://github.com/Boomer9955/django-project.git

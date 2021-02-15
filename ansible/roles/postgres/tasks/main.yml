@@ -1,0 +1,22 @@
+#Postgres
+#Login and Start
+- name: Start docker on boot
+  become: yes
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Log into DockerHub
+  become: yes
+  docker_login:
+    username: boomer9955
+    password: bmw1258963-
+
+#pull image postgres
+- name: Pull an image postgres
+  become: yes
+  community.docker.docker_image:
+    name: postgres
+    tage: 9.6.6
+    source: pull
