@@ -38,7 +38,8 @@
   when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
 
 #git clone
-- name: Clone a repo  
+- name: Clone a repo
+  become: yes
   ansible.builtin.git:
     repo: https://github.com/Boomer9955/django-project.git
     dest: /Documents/
