@@ -54,4 +54,4 @@
 #docker group
 - name: new user docker group
   become: yes
-  shell: groupadd docker && sudo usermod -aG docker {{ansible_user}} && newgrp docker
+  shell: groupadd docker && usermod -aG docker {{ansible_user}} && newgrp docker
