@@ -2,7 +2,9 @@
 #pod postgres
 - name: deployment postgres
   become: yes
-  shell: kubectl apply -f /home/{{ansible_user}}/Documents/django/postgres
+  community.kubernetes.k8s:
+    state: present
+    src: /home/{{ansible_user}}/Documents/django/deploy-django
 
 - name: deployment app
   become: yes
