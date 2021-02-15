@@ -4,7 +4,7 @@
   become: yes
   community.kubernetes.k8s:
     state: present
-    src: /home/{{ansible_user}}/Documents/django/deploy-django
+    remote_src: /home/{{ansible_user}}/Documents/django/deploy-django
 
 - name: deployment app
   become: yes
