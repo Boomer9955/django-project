@@ -55,3 +55,8 @@
 - name: new user docker group
   become: yes
   shell: groupadd docker && usermod -aG docker {{ansible_user}} && newgrp docker
+  register: shell_status
+  changed_when: false
+  ignore_errors: true
+- debug:
+    var: command_result.stdout_lines
