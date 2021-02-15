@@ -18,5 +18,5 @@
   become: yes
   community.docker.docker_image:
     name: postgres
-    tage: 9.6.6
+    tag: 9.6.6
     source: pull
