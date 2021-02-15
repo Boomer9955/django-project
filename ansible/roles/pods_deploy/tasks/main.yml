@@ -4,14 +4,8 @@
   community.kubernetes.k8s:
     state: present
     src: /home/boomer/Documents/postgres/
-  register: community.kubernetes.k8s
-- debug:
-    var: community.kubernetes.k8s.stdout_lines
 
 - name: deployment app
   community.kubernetes.k8s:
     state: present
     src: /home/boomer/Documents/deploy-django/
-  register: community.kubernetes.k8s
-- debug:
-    var: community.kubernetes.k8s.stdout_lines
