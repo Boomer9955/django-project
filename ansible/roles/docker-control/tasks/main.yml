@@ -12,12 +12,12 @@
     username: boomer9955
     password: bmw1258963-
 
-#delete image
-- name: rmi an image
-  become: yes
-  community.docker.docker_image:
+#Remove image
+- name: Remove image
+  community.general.docker_image:
+    state: absent
     name: boomer9955/mydjango
-    source: rmi
+    tag: latest
 
 #pull image
 - name: Pull an image
