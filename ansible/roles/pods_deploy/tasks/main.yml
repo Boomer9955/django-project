@@ -1,14 +1,16 @@
 #Deployment Pods kubernets
 #pod postgres
 - name: deployment postgres
-  command: cd Documents | kubectl apply -f ~postgres/
+  become: yes
+  command: cd /home/boomer/Documents | kubectl apply -f ~postgres/
   register: command_result
 - debug:
     var: command_result.stdout_lines
 
 #pod app
 - name: deployment app
-  command: cd Documents | kubectl apply -f ~deploy-django/
+  become: yes
+  command: cd /home/boomer/Documents | kubectl apply -f ~deploy-django/
   register: command_result
 - debug:
     var: command_result.stdout_lines
