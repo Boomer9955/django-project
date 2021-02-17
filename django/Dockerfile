@@ -10,4 +10,4 @@ ENV PYTHONUNBUFFERED 1
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 COPY . .
-CMD python manage.py runserver 0.0.0.0:8010
+CMD python manage.py runserver 192.168.31.126:8010

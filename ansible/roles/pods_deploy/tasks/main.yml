@@ -1,43 +1,10 @@
 #Deployment Pods kubernets
 #pod postgres
+- name: deployment postgres
+  become: yes
+  shell: kubectl apply -f /home/{{ansible_user}}/Documents/django/postgres
+
+#pod app
 - name: deployment app
   become: yes
-  community.kubernetes.k8s:
-    state: present
-    definition:
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        creationTimestamp: null
-        labels:
-          app: djangoweb
-        name: djangoweb
-      spec:
-        replicas: 1
-        selector:
-          matchLabels:
-            app: djangoweb
-        template:
-          metadata:
-            creationTimestamp: null
-            labels:
-              app: djangoweb
-          spec:
-            containers:
-              - name: djangoweb
-                image: boomer9955/mydjango:latest
-                ports:
-                  - containerPort: 8010
-                env:
-                  - name: POSTGRES_USER
-                    valueFrom:
-                      secretKeyRef:
-                        name: postgres-credentials
-                        key: user
-                  - name: POSTGRES_PASSWORD
-                    valueFrom:
-                      secretKeyRef:
-                        name: postgres-credentials
-                        key: password
-                  - name: POSTGRES_HOST
-                    value: postgres-service
+  shell: kubectl apply -f /home/{{ansible_user}}/Documents/django/deploy-django

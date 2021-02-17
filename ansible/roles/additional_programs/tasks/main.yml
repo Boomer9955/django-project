@@ -1,0 +1,13 @@
+# install app
+- name: apt-get upgrade
+  become: yes
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: install iptables
+  become: yes
+  apt:
+    name: iptables
+    state: present
+    update_cache: yes

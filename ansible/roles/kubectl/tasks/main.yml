@@ -32,3 +32,17 @@
   vars:
     packages:
       - kubectl
+#kubeadm
+- name: Install kubeadm
+  become: yes
+  apt:
+    name: kubeadm
+    state: present
+    update_cache: yes
+#kubelet
+- name: Install kubelet
+  become: yes
+  apt:
+    name: kubelet
+    state: present
+    update_cache: yes
