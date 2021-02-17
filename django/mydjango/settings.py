@@ -71,7 +71,7 @@ DATABASES = {
         'NAME': 'kube_django',
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': '192.168.31.126'
+        'HOST': '192.168.31.126',
         'PORT': os.getenv('POSTGRES_PORT', 5432)
     }
 }
