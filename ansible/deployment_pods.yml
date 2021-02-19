@@ -1,5 +1,4 @@
 - hosts: myserver
   remote_user: boomer
   roles:
-    - postgres
     - pods_deploy

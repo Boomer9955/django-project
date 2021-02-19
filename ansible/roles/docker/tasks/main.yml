@@ -59,4 +59,4 @@
   changed_when: false
   ignore_errors: true
 - debug:
-    var: command_result.stdout_lines
+    var: shell_status.stdout_lines
