@@ -8,6 +8,5 @@ spec:
   ports:
   - protocol: TCP
     port: 8010
-    # targetPort: 8001
-  type: ClusterIP
-  # type: NodePort
+    targetPort: 8010
+  type: LoadBalancer
