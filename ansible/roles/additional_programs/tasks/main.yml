@@ -5,9 +5,70 @@
     upgrade: yes
     update_cache: yes
 
+#iptables
 - name: install iptables
   become: yes
   apt:
     name: iptables
     state: present
     update_cache: yes
+
+- name: set bridge-nf-call-iptables = 1
+  become: yes
+  lineinfile:
+    path: /etc/sysctl.conf
+    line: net.bridge.bridge-nf-call-iptables = 1
+
+#- name: apply sysctl config
+#  become: yes
+#  shell: sysctl -p
+    
+#Python
+- name: Install python
+  become: yes
+  apt:
+    name: python3.8
+    update_cache: yes
+  notify: good install python
+
+- name: Install python package
+  become: yes
+  pip:
+    name: 
+      - setuptools
+      - virtualenv
+      - selinux
+      - docker-compose
+
+#System config
+- name: install system updates
+  become: yes
+  yum: name=* state=latest update_cache=yes
+
+- name: Disable SELinux
+  become: yes
+  selinux:
+     state: disabled
+
+- name: disable swap
+  become: yes
+  shell: /usr/sbin/swapoff -a
+
+- name: disable swap permanently
+  become: yes
+  lineinfile:
+    path: /etc/fstab
+    regexp: '^[^#].*swap.*$'
+    state: absent
+
+- name: delete swapfile
+  become: yes
+  file:
+    path: /swapfile
+    state: absent
+
+- name: create /vagrant directory
+  become: yes
+  file:
+    path: /vagrant
+    state: directory

@@ -38,25 +38,10 @@
     update_cache: yes
   notify: Start docker on boot
 
-- name: Install python
-  become: yes
-  apt:
-    name: ['python3-pip', 'python3-setuptools', 'virtualenv']
-    update_cache: yes
-  notify: good install python
-
-- name: Install docker-compose
-  become: yes
-  pip:
-    name: docker-compose
-  notify: good install docker-compose
-
 #docker group
-- name: new user docker group
+- name: Add vagrant user to docker group
   become: yes
-  shell: groupadd docker && usermod -aG docker {{ansible_user}} && newgrp docker
-  register: shell_status
-  changed_when: false
-  ignore_errors: true
-- debug:
-    var: shell_status.stdout_lines
+  user:
+    name: vagrant
+    groups: docker
+    append: yes

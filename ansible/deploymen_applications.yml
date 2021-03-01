@@ -1,8 +1,10 @@
-- hosts: myserver
-  remote_user: boomer
+- hosts: all
+  become: yes
+  become_method: sudo
   roles:
+    - additional_programs
     - docker
+    - minikube
     - kubectl
     - VirtualBox
-    - minikube
-    - additional_programs
+    - test

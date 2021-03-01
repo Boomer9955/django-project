@@ -1,27 +1,20 @@
-#pull image minikube
-- name: Pull an image
-  become: yes
-  community.docker.docker_image:
-    name: gcr.io/k8s-minikube/kicbase
-    tag: v0.0.14
-    source: pull
-
 # Minikube
 - name: Download Minikube
   become: yes
   get_url:
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    dest: /home/boomer/Downloads/minikube-linux-amd64
+    dest: /home/vagrant/Downloads/minikube-linux-amd64
     mode: 0440
 
 - name: Install Minikube
   become: yes
   shell: "install minikube-linux-amd64 /usr/local/bin/minikube"
   args: 
-    chdir: /home/boomer/Downloads
+    chdir: /home/vagrant/Downloads
   register: install_minikube
 
 - name: Debug install_minikube
+  become: yes
   debug: 
     var: install_minikube
 
@@ -34,3 +27,12 @@
 - name: Start Minikube if it's not running.
   command: minikube start
   when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
+
+- name: copy minikube conf
+  become: yes
+  copy:
+    src: /root/.minikube
+    dest: /home/vagrant/
+    remote_src: yes
+    owner: vagrant
+    group: vagrant

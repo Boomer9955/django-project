@@ -46,3 +46,53 @@
     name: kubelet
     state: present
     update_cache: yes
+
+- name: start and enable kubelet service
+  become: yes
+  service:
+    name: kubelet
+    enabled: yes
+    state: started
+
+- name: create dir /home/vagrant/bin
+  become: yes
+  file:
+    path: /home/vagrant/bin
+    state: directory
+
+- name: copy kubectl conf
+  become: yes
+  copy:
+    src: /root/.kube
+    dest: /home/vagrant/
+    remote_src: yes
+    owner: vagrant
+    group: vagrant
+
+- name: fix kubectl conf
+  become: yes
+  replace:
+    path: /home/vagrant/.kube/config
+    regexp: '/root'
+    replace: '/home/vagrant'
+
+- name: enable kubectl autocompletion
+  become: yes
+  lineinfile:
+    path: /home/vagrant/.bashrc
+    line: source <(kubectl completion bash)
+    insertafter: EOF
+
+- name: enable kubectl alias
+  become: yes
+  lineinfile:
+    path: /home/vagrant/.bashrc
+    line: alias k="kubectl"
+    insertafter: EOF
+
+- name: enable kubectl alias
+  become: yes
+  lineinfile:
+    path: /home/vagrant/.bashrc
+    line: alias kc="kubectl"
+    insertafter: EOF
