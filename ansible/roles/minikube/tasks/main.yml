@@ -3,14 +3,14 @@
   become: yes
   get_url:
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    dest: /home/vagrant/Downloads/minikube-linux-amd64
+    dest: /home/vagrant/minikube-linux-amd64
     mode: 0440
 
 - name: Install Minikube
   become: yes
   shell: "install minikube-linux-amd64 /usr/local/bin/minikube"
   args: 
-    chdir: /home/vagrant/Downloads
+    chdir: /home/vagrant
   register: install_minikube
 
 - name: Debug install_minikube
