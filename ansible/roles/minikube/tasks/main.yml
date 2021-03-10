@@ -9,30 +9,9 @@
 - name: Install Minikube
   become: yes
   shell: "install minikube-linux-amd64 /usr/local/bin/minikube"
-  args: 
-    chdir: /home/vagrant
   register: install_minikube
 
 - name: Debug install_minikube
   become: yes
   debug: 
     var: install_minikube
-
-- name: Check Minikube's status.
-  command: minikube status
-  register: minikube_status
-  changed_when: false
-  ignore_errors: true
-#Otherwise will start minikube
-- name: Start Minikube if it's not running.
-  command: minikube start
-  when: "not minikube_status.stdout or 'Running' not in minikube_status.stdout"
-
-- name: copy minikube conf
-  become: yes
-  copy:
-    src: /root/.minikube
-    dest: /home/vagrant/
-    remote_src: yes
-    owner: vagrant
-    group: vagrant

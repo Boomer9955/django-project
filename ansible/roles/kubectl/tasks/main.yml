@@ -54,28 +54,6 @@
     enabled: yes
     state: started
 
-- name: create dir /home/vagrant/bin
-  become: yes
-  file:
-    path: /home/vagrant/bin
-    state: directory
-
-- name: copy kubectl conf
-  become: yes
-  copy:
-    src: /root/.kube
-    dest: /home/vagrant/
-    remote_src: yes
-    owner: vagrant
-    group: vagrant
-
-- name: fix kubectl conf
-  become: yes
-  replace:
-    path: /home/vagrant/.kube/config
-    regexp: '/root'
-    replace: '/home/vagrant'
-
 - name: enable kubectl autocompletion
   become: yes
   lineinfile:

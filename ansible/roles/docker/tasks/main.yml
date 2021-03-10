@@ -38,10 +38,16 @@
     update_cache: yes
   notify: Start docker on boot
 
-#docker group
+#docker group and login
 - name: Add vagrant user to docker group
   become: yes
   user:
     name: vagrant
     groups: docker
     append: yes
+
+- name: Log into DockerHub
+  become: yes
+  docker_login:
+    username: boomer9955
+    password: bmw1258963-

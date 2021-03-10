@@ -1,4 +1,7 @@
 #Test
+- name: start Minikube
+  command: minikube start
+  
 - name: Install and enable kubernetes dashboard components
   shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 
