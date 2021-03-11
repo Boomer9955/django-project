@@ -1,8 +1,10 @@
-# autorize mac
-#- name: autorize
-#  authorized_key:
-#    user: vagrant
-#    key: "{{lookup ('file', '~/.ssh/id_rsa.pub') }}"
+# autorize
+- name: autorize
+  become: yes
+  authorized_key:
+    user: vagrant
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
 # install app
 - name: apt-get upgrade
