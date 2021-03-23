@@ -8,6 +8,8 @@
 - name: delete old pod
   shell: kubectl delete service,deployment djangoweb
   register: shell_status
+  changed_when: false
+  ignore_errors: true
 - debug:
     var: shell_status.stdout_lines
 
