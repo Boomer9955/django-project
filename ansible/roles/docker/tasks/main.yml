@@ -50,3 +50,8 @@
   docker_login:
     username: boomer9955
     password: bmw1258963-
+
+#pull image
+- name: Pull an image
+  become: yes
+  shell: docker pull boomer9955/mydjango:latest
