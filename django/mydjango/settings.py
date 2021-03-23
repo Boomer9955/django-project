@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_gi)chhhag$4&-^9+t_5m8qt=@&l1ed55bv$&n*fs8ekr$(@tp'
+SECRET_KEY = 'k1u!rnmwq20#iult1df@u^v^pr!z5j%&q5*vw+c$qvq8ty4vs_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -67,12 +67,8 @@ WSGI_APPLICATION = 'mydjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'kube_django',
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('POSTGRES_HOST'),
-        'PORT': os.getenv('POSTGRES_PORT', 5432)
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

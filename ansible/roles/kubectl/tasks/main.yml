@@ -67,10 +67,3 @@
     path: /home/vagrant/.bashrc
     line: alias k="kubectl"
     insertafter: EOF
-
-- name: enable kubectl alias
-  become: yes
-  lineinfile:
-    path: /home/vagrant/.bashrc
-    line: alias kc="kubectl"
-    insertafter: EOF

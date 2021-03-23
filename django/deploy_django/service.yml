@@ -9,4 +9,4 @@ spec:
   - protocol: TCP
     port: 8010
     targetPort: 8010
-  type: LoadBalancer
+  type: NodePort

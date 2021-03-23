@@ -2,7 +2,5 @@
   roles:
     - additional_programs
     - docker
-    - VirtualBox
     - minikube
     - kubectl
-    - test

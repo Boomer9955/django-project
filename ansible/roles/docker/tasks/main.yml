@@ -36,7 +36,6 @@
     name: docker-ce
     state: present
     update_cache: yes
-  notify: Start docker on boot
 
 #docker group and login
 - name: Add vagrant user to docker group

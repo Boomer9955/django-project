@@ -1,5 +1,3 @@
-- hosts: myserver
-  become: yes
-  become_method: sudo
+- hosts: all
   roles:
     - pods_deploy
