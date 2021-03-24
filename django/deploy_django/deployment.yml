@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: djangoweb
+  name: django
   labels:
-    app: djangoweb
+    app: django
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: djangoweb
+      app: django-container
   template:
     metadata:
       labels:
-        app: djangoweb
+        app: django-container
     spec:
       containers:
-        - name: djangoweb
+        - name: django-web
           image: boomer9955/mydjango:latest
           ports:
             - containerPort: 8010
