@@ -1,8 +1,20 @@
-#Deployment Pods kubernets
-#pod postgres
-- name: deployment postgres
-  become: yes
+#Deployment Pods
+- name: status
   shell: kubectl get all
+  register: shell_status
+- debug:
+    var: shell_status.stdout_lines
+
+- name: delete old pod
+  shell: kubectl delete service,deployment djangoweb
+  register: shell_status
+  changed_when: false
+  ignore_errors: true
+- debug:
+    var: shell_status.stdout_lines
+
+- name: deploy django
+  shell: kubectl apply -f /home/{{ansible_user}}/django/django/deploy_django/
   register: shell_status
 - debug:
     var: shell_status.stdout_lines

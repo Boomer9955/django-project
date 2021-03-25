@@ -42,4 +42,4 @@
   become: yes
   ansible.builtin.git:
     repo: https://github.com/Boomer9955/django-project.git
-    dest: /home/{{ansible_user}}/Documents/
+    dest: /home/{{ansible_user}}/django/

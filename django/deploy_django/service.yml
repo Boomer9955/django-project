@@ -1,12 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: djangoweb
+  name: django-service
 spec:
   selector:
-    pod: djangoweb
+    app: django-container
   ports:
   - protocol: TCP
     port: 8010
     targetPort: 8010
-  type: LoadBalancer
+  type: NodePort
