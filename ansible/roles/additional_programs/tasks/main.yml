@@ -1,3 +1,11 @@
+# autorize
+- name: autorize
+  become: yes
+  authorized_key:
+    user: vagrant
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    
 # install app
 - name: apt-get upgrade
   become: yes
