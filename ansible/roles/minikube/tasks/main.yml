@@ -8,8 +8,11 @@
 
 - name: Install Minikube
   become: yes
-  shell: "install minikube-linux-amd64 /usr/local/bin/minikube"
+  path: /home/vagrant
+  command: "install minikube-linux-amd64 /usr/local/bin/minikube"
   register: install_minikube
+  changed_when: false
+  ignore_errors: true
 
 - name: Debug install_minikube
   become: yes
