@@ -18,3 +18,9 @@
   register: shell_status
 - debug:
     var: shell_status.stdout_lines
+
+- name: status
+  shell: kubectl get all
+  register: shell_status
+- debug:
+    var: shell_status.stdout_lines
