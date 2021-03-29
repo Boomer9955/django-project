@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/focal64"
     #hostname виртуальной машины
-    config.vm.hostname = "ubuntu-10"
+    config.vm.hostname = "ubuntu"
 
     config.vm.provider "virtualbox" do |v|
         v.memory = 4048
