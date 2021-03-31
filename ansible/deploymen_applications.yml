@@ -1,6 +1,6 @@
 - hosts: all
   roles:
-    #- additional_programs
-    #- docker
+    - additional_programs
+    - docker
     - minikube
     - kubectl
