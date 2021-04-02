@@ -6,7 +6,7 @@
     var: shell_status.stdout_lines
 
 - name: delete old pod
-  shell: kubectl delete service,deployment djangoweb
+  shell: kubectl delete service,deployment django-service
   register: shell_status
   changed_when: false
   ignore_errors: true

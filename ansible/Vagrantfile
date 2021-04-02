@@ -21,6 +21,6 @@ Vagrant.configure("2") do |config|
     #ansible_local and ansible
     config.vm.provision "ansible_local" do |ansible|
         ansible.verbose = "v"
-        ansible.playbook = "deploymen_applications.yml"
+        ansible.playbook = "applications_deploymen.yml"
     end
 end
