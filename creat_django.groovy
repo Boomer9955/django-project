@@ -1,6 +1,6 @@
 node {
     checkout scm
     curDate = readFile 'ansible/hosts.yml'
-    def mb = (curDate =~ /#(\d+)/)
-        println mb[0][1]
+    def mb = (curDate =~ [0-9])
+        println mb[0]
 }
