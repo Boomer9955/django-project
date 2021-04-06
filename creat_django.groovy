@@ -1,11 +1,29 @@
 pipeline {
     agent any
 
-    stages {
-        stage('creature docker_file') {
-            steps {
-                echo 'Hello World'
+    stage('Cloning our Git') { 
+
+            steps { 
+
+                checkout scm
+
+            }   
+
+        } 
+
+    stage('Building our image') { 
+
+        steps { 
+
+            script { 
+                dir("django") {
+                    sh "pwd"
+                    println hosts.yml['ansible_host'][0]
+                }
+
             }
+
         }
+
     }
 }
