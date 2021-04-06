@@ -21,7 +21,7 @@ pipeline {
                     dir("ansible") {
                         sh "pwd"
                         sh "ls"
-                        sh 'cat hosts.yml| grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
+                        sh 'grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" hosts.yml'
                     }
 
                 }
