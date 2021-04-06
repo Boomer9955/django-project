@@ -1,9 +1,11 @@
 node {
     checkout scm
-    sh "pwd"
-    sh "ls"
-    ip = sh 'grep -E -o "([0-9]{1,3}[\\.]){3}[0-9]{1,3}" ansible/hosts.yml'
-    groovyString = "${ip}"
-    bigGroovyString = """${groovyString}"""
-    println bigGroovyString
+    @Grab('org.yaml:snakeyaml:1.17')
+
+    import org.yaml.snakeyaml.Yaml
+
+    Yaml parser = new Yaml()
+    List example = parser.load(("ansible/hosts.yaml" as File).text)
+
+    example.each{println it.subject}
 }
