@@ -6,5 +6,4 @@ node {
     groovyString = "${ip}"
     bigGroovyString = """${groovyString}"""
     println bigGroovyString
-    #sh "curl http://${host}:8080"
 }
