@@ -1,5 +1,6 @@
 node {
     checkout scm
     curDate = readFile 'ansible/hosts.yml'
-     echo "${curDate}"
+    def match = url =~ 'ansible_host'
+     echo "${match}"
 }
