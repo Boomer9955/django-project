@@ -21,7 +21,8 @@ pipeline {
                     dir("ansible") {
                         sh "pwd"
                         sh "ls"
-                        sh 'grep -E -o "([0-9]{1,3}[\\.]){3}[0-9]{1,3}" hosts.yml'
+                        def ip = sh 'grep -E -o "([0-9]{1,3}[\\.]){3}[0-9]{1,3}" hosts.yml'
+                        println "${ip}"
                     }
 
                 }
