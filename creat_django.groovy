@@ -1,5 +1,6 @@
 node {
     checkout scm
-    curDate = readFile 'ansible/hosts.yml'
-    echo "${curDate}"
+    def file = new File('ansible/hosts.yml')
+    def yourData = file.eachLine { line ->
+        println line }
 }
