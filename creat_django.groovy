@@ -18,7 +18,7 @@ pipeline {
             script { 
                 dir("django") {
                     sh "pwd"
-                    println hosts.yml['ansible_host'][0]
+                    println ansible/hosts.yml['ansible_host'][0]
                 }
 
             }
