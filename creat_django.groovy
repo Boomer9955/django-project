@@ -3,6 +3,6 @@ node {
 
     curDate = readFile 'ansible/hosts.yml'
 
-    def mb = (curDate =~ (\d+\.){3}\d+))
+    def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
         println mb[0]
 }
