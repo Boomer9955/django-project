@@ -20,6 +20,7 @@ pipeline {
                 script { 
                     dir("django") {
                         sh "pwd"
+                        sh "ls"
                         println ansible/hosts.yml['ansible_host'][0]
                     }
 
