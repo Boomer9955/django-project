@@ -18,10 +18,10 @@ pipeline {
             steps { 
 
                 script { 
-                    dir("django") {
+                    dir("ansible") {
                         sh "pwd"
                         sh "ls"
-                        sh "cat ansible/hosts.yml"
+                        sh "cat hosts.yml"
                     }
 
                 }
