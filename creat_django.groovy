@@ -4,5 +4,5 @@ node {
     curDate = readFile 'ansible/hosts.yml'
 
     def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
-        sh 'ping mb[0]'
+    def res = sh(script: 'curl mb[0]', returnStdout: true)
 }
