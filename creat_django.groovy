@@ -2,8 +2,7 @@ env.registry = "boomer9955/mydjango"
 env.registryCredential = "dockerhub_id"
 env.dockerImage=""
 
-node {
-
+node{
     stage('копируем репу'){
         checkout scm
     }
@@ -13,5 +12,6 @@ node {
             sh "ansible-vault decrypt --vault-password-file jenkins.conf ansible/password.conf"
             sh "cat ansible/passwor.conf"
             //dockerImage = docker.build registry + ":latest"
+        }
     }
 }
