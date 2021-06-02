@@ -1,10 +1,17 @@
+env.registry = "boomer9955/mydjango"
+env.registryCredential = "dockerhub_id"
+env.dockerImage=""
+
 node {
-    checkout scm
 
-    curDate = readFile 'ansible/hosts.yml'
-
-    def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
-        ip = mb[0]
-        println "${ip}"
-    sh 'curl http://${ip}:8000'
+    stage('копируем репу'){
+        checkout scm
+    }
+    stage('собираем image'){
+        withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
+            writeFile file: 'jenkins.conf', text: "$password"
+            sh "ansible-vault decrypt --vault-password-file jenkins.conf ansible/password.conf"
+            sh "cat ansible/passwor.conf"
+            //dockerImage = docker.build registry + ":latest"
+    }
 }
