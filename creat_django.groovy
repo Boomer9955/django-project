@@ -9,7 +9,7 @@ node{
     stage('собираем image'){
         withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
             sh "ansible-vault decrypt --vault-password-file $password ansible/password.conf"
-            sh "cat ansible/passwor.conf"
+            sh "cat ansible/password.conf"
             //dockerImage = docker.build registry + ":latest"
         }
     }
