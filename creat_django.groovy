@@ -8,8 +8,7 @@ node{
     }
     stage('собираем image'){
         withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
-            writeFile file: 'jenkins.conf', text: "$password"
-            sh "ansible-vault decrypt --vault-password-file jenkins.conf ansible/password.conf"
+            sh "ansible-vault decrypt --vault-password-file $password ansible/password.conf"
             sh "cat ansible/passwor.conf"
             //dockerImage = docker.build registry + ":latest"
         }
