@@ -13,7 +13,7 @@ node{
                 ip = ipad[0]
             println "${ip}"
         def us =(curDate =~ "user")
-            u = us[0]
+            u = us[1]
             println "${u}"
             //sh "ansible-vault decrypt --vault-password-file {$password} ansible/password.conf"
             //dockerImage = docker.build registry + ":latest"
