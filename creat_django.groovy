@@ -7,11 +7,12 @@ node{
         checkout scm
     }
     stage('собираем image'){
-        withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
-            writeFile file: 'token.txt', text: "$password"
-            sh "ansible-vault decrypt --vault-password-file {$password} ansible/password.conf"
-            sh "cat ansible/password.conf"
-            sh "rm token.txt"
+        curDate = readFile '/Users/yurkin-rv/Documents/django-project/ansible/log.yml'
+        println "${curDate}"
+        def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
+                ip = mb[0]
+            println "${ip}"
+            //sh "ansible-vault decrypt --vault-password-file {$password} ansible/password.conf"
             //dockerImage = docker.build registry + ":latest"
         }
     }
