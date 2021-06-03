@@ -1,3 +1,7 @@
+#!/usr/bin/env groovy
+
+import groovy.yaml.YamlSlurper
+
 env.registry = "boomer9955/mydjango"
 env.registryCredential = "dockerhub_id"
 env.dockerImage=""
