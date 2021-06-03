@@ -14,6 +14,5 @@ node{
             println "${ip}"
             //sh "ansible-vault decrypt --vault-password-file {$password} ansible/password.conf"
             //dockerImage = docker.build registry + ":latest"
-        }
     }
 }
