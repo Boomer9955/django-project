@@ -7,7 +7,7 @@ node{
         checkout scm
     }
     stage('собираем image'){
-        curDate = readFile '/Users/yurkin-rv/Documents/django-project/ansible/log.yml'
+        curDate = readFile 'ansible/log.yml'
         println "${curDate}"
         def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
                 ip = mb[0]
