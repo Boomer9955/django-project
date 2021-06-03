@@ -7,9 +7,11 @@ node{
         checkout scm
     }
     stage('собираем image'){
-        withCredentials([file(credentialsId: 'docker_hub', variable: 'password')]) {
+        withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
+            writeFile file: 'token.txt', text: "$password"
             sh "ansible-vault decrypt --vault-password-file {$password} ansible/password.conf"
             sh "cat ansible/password.conf"
+            sh "rm token.txt"
             //dockerImage = docker.build registry + ":latest"
         }
     }
