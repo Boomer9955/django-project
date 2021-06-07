@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-@Grab("groovy.yaml.YamlSlurper")
+
 import groovy.yaml.YamlSlurper
 
 env.registry = "boomer9955/mydjango"
