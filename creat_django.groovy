@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-
+groovy.grape.Grape.grab(group:'org.springframework', module:'spring', version:'2.5.6')
 import groovy.yaml.YamlSlurper
 
 env.registry = "boomer9955/mydjango"
