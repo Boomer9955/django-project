@@ -4,10 +4,10 @@
 //import groovy.yaml.YamlSlurper
 @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7')
 @Grab('org.apache.httpcomponents:httpclient:4.2.6')
-
-env.registry="boomer9955/mydjango"
-env.registryCredential="dockerhub_id"
-env.dockerImage=""
+import groovy.yaml.YamlSlurper
+//env.registry="boomer9955/mydjango"
+//env.registryCredential="dockerhub_id"
+//env.dockerImage=""
 
 node{
     stage('копируем репу'){
