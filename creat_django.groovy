@@ -10,7 +10,9 @@ env.dockerImage=""
 node{
     stage('копируем репу'){
         checkout scm
-        sh : 'groovy -v'
+    }
+    stage('sh'){
+        sh 'groovy -v'
     }
     stage('собираем image'){
         curDate = readFile 'ansible/log.yml'
