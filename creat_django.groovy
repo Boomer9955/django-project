@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-@Grab('org.yaml:snakeyaml:1.17')
 import org.yaml.snakeyaml.Yaml
 import groovy.*
 //env.registry="boomer9955/mydjango"
