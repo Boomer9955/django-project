@@ -17,7 +17,7 @@ node{
                 ip = ipad[0]
             println "${ip}"
         Yaml parser = new Yaml()
-        List example = parser.load(curDate as File).text)
+        List example = parser.load((curDate as File).text)
         example.each{println it.user}
             //sh "ansible-vault decrypt --vault-password-file {$password} ansible/password.conf"
             //dockerImage = docker.build registry + ":latest"
