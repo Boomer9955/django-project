@@ -1,10 +1,8 @@
 #!/usr/bin/env groovy
 //groovy.grape.Grape.grab(group:'org.springframework', module:'spring', version:'2.5.6')
 //@Grab(group='yaml', module='YamlSlurper', version='1.0.1')
-//import groovy.yaml.YamlSlurper
-@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7')
-@Grab('org.apache.httpcomponents:httpclient:4.2.6')
-import groovy.yaml.YamlSlurper
+//import groovy.yaml.YamlSlurpe)
+import jenkins.*
 //env.registry="boomer9955/mydjango"
 //env.registryCredential="dockerhub_id"
 //env.dockerImage=""
