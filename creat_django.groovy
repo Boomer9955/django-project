@@ -5,46 +5,22 @@ import groovy.*
 //env.registryCredential="dockerhub_id"
 //env.dockerImage=""
 
-pipeline { 
+node{
+    checkout scm
 
-    agent any 
+    curDate = readFile 'ansible/hosts.yml'
+    read = readYaml file: curDate
+    
+    /*def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
+        ip = mb[0]
+        println "${ip}"
+    sh 'curl http://${ip}:8000'*/
+    amap = ['something': 'my datas',
+                    'size': 3,
+                    'isEmpty': false]
 
-    stages { 
-
-        stage('Cloning our Git') { 
-
-            steps { 
-
-                checkout scm
-
-            }
-
-        } 
-
-        stage('Building our image') { 
-
-            steps { 
-
-                script { 
-                    curDate = readFile 'ansible/hosts.yml'
-                    read = readYaml file: curDate
-                    println "${read}"
-                    /*def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
-                        ip = mb[0]
-                        println "${ip}"
-                    sh 'curl http://${ip}:8000'*/
-                    amap = ['something': 'my datas',
-                                    'size': 3,
-                                    'isEmpty': false]
-
-                    writeYaml file: curDate, data: amap
-                    read = readYaml file: curDate
-                    println "${read}"
-
-                }
-
-            } 
-
-        }
-    }
+    writeYaml file: curDate, data: amap
+    read = readYaml file: curDate
+    println "${read}"
+    
 }
