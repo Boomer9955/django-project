@@ -19,7 +19,8 @@ node{
     read = ['something': 'my datas',
                     'size': 3,
                     'isEmpty': false]
-
+    
+   sh "rm $pathtofile"
    writeYaml file: curDate, data: read
    sh "cat $curDate"
    archiveArtifacts "$curDate"
