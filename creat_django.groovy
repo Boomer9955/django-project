@@ -25,7 +25,7 @@ node{
     }
     stage("3"){
         read = readYaml file: curDate
-        read.applications.components.controller[1] = ['name': 'my datas',
+        read.applications.components[1].controller = ['name': 'my datas',
                         'setings.url': 3]
 
        sh "rm $curDate"
