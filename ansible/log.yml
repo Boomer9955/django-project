@@ -1,12 +1,5 @@
 applications:
 - name: ppsdfs
   components:
-    models:
-    - name: pizun
-      description: piun
-    controller:
-      proxy:
-        name: proxy-nginx
-        settings:
-          resources: 1
-          autoscaling: 2
+    models: 1231
+    
