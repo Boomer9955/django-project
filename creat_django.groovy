@@ -15,12 +15,11 @@ node{
         println "${ip}"
     sh 'curl http://${ip}:8000'*/
     read.user = 'boomer'
-    amap = ['something': 'my datas',
+    read = ['something': 'my datas',
                     'size': 3,
                     'isEmpty': false]
 
    sh "rm $curDate"
-   writeYaml file: curDate, data: amap
    writeYaml file: curDate, data: read
    sh "cat $curDate"
    archiveArtifacts "$curDate"
