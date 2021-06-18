@@ -1,5 +1,8 @@
 applications:
 - name: ppsdfs
   components:
-    models: 1231
-    
+    models:
+      set: wdwd
+    control:
+      proxy:
+        wfsdfsd: 234234
