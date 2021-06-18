@@ -25,7 +25,7 @@ node{
     }
     stage("3"){
         read = readYaml file: curDate
-        read.pass = ['something': 'my datas',
+        read.pass[1] = ['something': 'my datas',
                         'size': 3]
 
        sh "rm $curDate"
