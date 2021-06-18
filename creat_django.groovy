@@ -19,8 +19,10 @@ node{
                     'size': 3,
                     'isEmpty': false]
 
-    writeYaml file: curDate, data: amap
-    read = readYaml file: curDate
-    println "${read}"
+   sh "rm $curDate"
+   writeYaml file: curDate, data: amap
+   writeYaml file: curDate, data: read
+   sh "cat $curDate"
+   archiveArtifacts "$curDate"
     
 }
