@@ -16,9 +16,9 @@ node{
         println "${ip}"
     sh 'curl http://${ip}:8000'*/
     read.user = 'boomer'
-    read = ['something': 'my datas',
+    /*read = ['something': 'my datas',
                     'size': 3,
-                    'isEmpty': false]
+                    'isEmpty': false]*/
     
    sh "rm $curDate"
    writeYaml file: curDate, data: read
