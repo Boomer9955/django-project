@@ -5,20 +5,21 @@ import groovy.*
 //env.registryCredential="dockerhub_id"
 //env.dockerImage=""
 
-node{
-    stage('копируем репу'){
-        checkout scm
-    }
-    stage('собираем image'){
-        curDate = readFile 'ansible/log.yml'
-        println "${curDate}"
-        def ipad = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
-                ip = ipad[0]
-            println "${ip}"
-        Yaml parser = new Yaml()
-        List example = parser.load((curDate as File).text)
-        example.each{println it.user}
-            //sh "ansible-vault decrypt --vault-password-file {$password} ansible/password.conf"
-            //dockerImage = docker.build registry + ":latest"
-    }
+node {
+    checkout scm
+
+    curDate = readFile 'ansible/hosts.yml'
+    def read = readYaml file: curDate
+    
+    /*def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
+        ip = mb[0]
+        println "${ip}"
+    sh 'curl http://${ip}:8000'*/
+    def amap = ['something': 'my datas',
+                    'size': 3,
+                    'isEmpty': false]
+
+    writeYaml file: curDate, data: amap
+    def read = readYaml file: curDate
+    println "${read}"
 }
