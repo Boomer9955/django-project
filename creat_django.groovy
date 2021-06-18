@@ -8,8 +8,7 @@ import groovy.*
 node{
     checkout scm
 
-    curDate = readFile 'ansible/hosts.yml'
-    read = readYaml file: curDate
+    curDate = readFile 'ansible/log.yml'
     
     /*def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
         ip = mb[0]
