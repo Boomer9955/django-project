@@ -14,7 +14,7 @@ node{
         ip = mb[0]
         println "${ip}"
     sh 'curl http://${ip}:8000'*/
-    read.user[0] = 'boomer'
+    read.user = 'boomer'
     amap = ['something': 'my datas',
                     'size': 3,
                     'isEmpty': false]
