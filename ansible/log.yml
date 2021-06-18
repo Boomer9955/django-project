@@ -1,4 +1,12 @@
-ip: 10.22.32.13
-user: afafasf
-pass:
-  url: pizun
+applications:
+- name: ppsdfs
+  components:
+    models:
+    - name: pizun
+      description: piun
+    controller:
+      proxy:
+        name: proxy-nginx
+        settings:
+          resources: 1
+          autoscaling: 2
