@@ -17,7 +17,7 @@ node{
             ip = mb[0]
             println "${ip}"
         sh 'curl http://${ip}:8000'*/
-        read.user = 'boomer'
+        read.applications[0].name = 'boomer'
         sh "rm $curDate"
        writeYaml file: curDate, data: read
        sh "cat $curDate"
@@ -25,8 +25,8 @@ node{
     }
     stage("3"){
         read = readYaml file: curDate
-        read.pass[1] = ['something': 'my datas',
-                        'size': 3]
+        read.applications.controller[database] = ['name': 'my datas',
+                        'setings.url': 3]
 
        sh "rm $curDate"
        writeYaml file: curDate, data: read
