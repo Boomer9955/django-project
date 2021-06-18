@@ -6,6 +6,7 @@ import groovy.*
 //env.dockerImage=""
 
 node{
+    deleteDir()
     checkout scm
 
     curDate = 'ansible/log.yml'
