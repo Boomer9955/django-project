@@ -11,9 +11,12 @@ node {
     checkout scm
 
     curDate = 'ansible/password.conf'
-
-    withCredentials([file(credentialsId: 'docker_hub', variable: SFILE)]) {
-        sh 'ansible-vault decrypt ${curDate} --vault-password-file ${SFILE}'
+    
+    withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
+            writeFile file: 'token.txt', text: "$password"
+            sh "ansible-vault decrypt --vault-password-file token.txt ${curDate}"
+            sh "cat ${curDate}"
+            sh "rm token.txt"
     }
 
 
