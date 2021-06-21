@@ -7,30 +7,39 @@ import groovy.*
 //env.dockerImage=""
 
 node {
-
-    checkout scm
-
     curDate = 'ansible/password.conf'
-    
-    withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
-            writeFile file: 'token.txt', text: "$password"
-            sh "ansible-vault decrypt --vault-password-file token.txt ${curDate}"
-            sh "cat ${curDate}"
-            sh "rm token.txt"
+
+    stage("git clone"){
+        checkout scm
     }
 
+    stage("Расшифровка ключа"){
+        withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
+                writeFile file: 'token.txt', text: "$password"
+                sh "ansible-vault decrypt --vault-password-file token.txt ${curDate}"
+                sh "cat ${curDate}"
+                sh "rm token.txt"
+        }
+    }
 
-    //def read = readYaml file: curDate
-    
-    /*def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
-        ip = mb[0]
-        println "${ip}"
-    sh 'curl http://${ip}:8000'
-    def amap = ['something': 'my datas',
-                    'size': 3,
-                    'isEmpty': false]
+    stage("Ищем ip в файле"){
+        def read = readYaml file: curDate
+        
+        def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
+            ip = mb[0]
+            println "${ip}"
+        sh 'curl http://${ip}:8000'
+    }
 
-    writeYaml file: curDate, data: amap
-    def read = readYaml file: curDate
-    println "${read}"*/
+    stage("добавляем в yml строк"){
+        def read = readYaml file: curDate
+        read.applications[0].components.models.controller["database"] = ["- name": dbname]
+        amap = ['something': 'my datas',
+                        'size': 3,
+                        'isEmpty': false]
+
+        writeYaml file: curDate, data: read
+        writeYaml file: curDate, data: amap
+        println "${read}"
+    }
 }
