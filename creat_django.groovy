@@ -23,14 +23,14 @@ node {
         }
     }
 
-    stage("Ищем ip в файле"){
+    /*stage("Ищем ip в файле"){
         def read = readYaml file: curDate
         
         def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
             ip = mb[0]
             println "${ip}"
         sh 'curl http://${ip}:8000'
-    }
+    }*/
 
     stage("добавляем в yml строк"){
         def read = readYaml file: curDate
