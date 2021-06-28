@@ -8,7 +8,7 @@ import groovy.*
 //env.dockerImage=""
 
 node {
-    curDate = 'ansible/password.conf'
+    curDate = 'ansible/log.yml'
 
     stage("git clone"){
         checkout scm
