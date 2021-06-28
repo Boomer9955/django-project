@@ -43,7 +43,7 @@ node {
         println "${read}"
     }
 
-    stage("добавляем в yml 2"){
+    /*stage("добавляем в yml 2"){
         def read = readYaml file: curDate
         def yaml = new groovy.yaml.YamlBuilder()
         yaml { temperature 37 }
@@ -53,5 +53,5 @@ node {
         
         writeYaml file: curDate, data: read
         println "${read}"
-    }
+    }*/
 }
