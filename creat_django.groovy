@@ -34,7 +34,7 @@ node {
 
     stage("добавляем в yml строк"){
         def read = readYaml file: curDate
-        read.applications[0].components.models.controller["database"] = ["- name": dbname]
+        //read.applications[0].components.models.controller["database"] = ["- name": dbname]
         read = ['something': 'my datas',
                         'size': 3,
                         'isEmpty': false]
