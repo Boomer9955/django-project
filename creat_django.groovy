@@ -14,7 +14,7 @@ node {
         checkout scm
     }
 
-    stage("Расшифровка ключа"){
+    /*stage("Расшифровка ключа"){
         withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
                 writeFile file: 'token.txt', text: "$password"
                 sh "ansible-vault decrypt --vault-password-file token.txt ${curDate}"
@@ -23,7 +23,7 @@ node {
         }
     }
 
-    /*stage("Ищем ip в файле"){
+    stage("Ищем ip в файле"){
         def read = readYaml file: curDate
         
         def mb = (curDate =~ "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")
