@@ -30,7 +30,7 @@ node {
             ip = mb[0]
             println "${ip}"
         sh 'curl http://${ip}:8000'
-    }*/
+    }
 
     stage("добавляем в yml строк"){
         def read = readYaml file: curDate
@@ -41,11 +41,11 @@ node {
 
         writeYaml file: curDate, data: read
         println "${read}"
-    }
+    }*/
 
-    /*stage("добавляем в yml 2"){
+    stage("добавляем в yml 2"){
         def read = readYaml file: curDate
-        def yaml = new groovy.yaml.YamlBuilder()
+        def yaml = new YamlBuilder()
         yaml { temperature 37 }
 
         def out = new StringWriter()
@@ -53,5 +53,5 @@ node {
         
         writeYaml file: curDate, data: read
         println "${read}"
-    }*/
+    }
 }
