@@ -34,12 +34,23 @@ node {
     stage("добавляем в yml строк"){
         def read = readYaml file: curDate
         read.applications[0].components.models.controller["database"] = ["- name": dbname]
-        amap = ['something': 'my datas',
+        read = ['something': 'my datas',
                         'size': 3,
                         'isEmpty': false]
 
         writeYaml file: curDate, data: read
-        writeYaml file: curDate, data: amap
+        println "${read}"
+    }
+
+    stage("добавляем в yml 2"){
+        def read = readYaml file: curDate
+        def yaml = new groovy.yaml.YamlBuilder()
+        yaml { temperature 37 }
+
+        def out = new StringWriter()
+        read << yaml
+        
+        writeYaml file: curDate, data: read
         println "${read}"
     }
 }
